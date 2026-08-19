@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATT/DES - CJ Legend</title>
+  
+  <style>
+    :root {
+      --bg: #050505;
+      --card-bg: #121212;
+      --accent: #facc15;
+      --text: #ffffff;
+      --muted: #a1a1aa;
+      --btn-green: #22c55e;
+      --btn-yellow: #eab308;
+      --border: #27272a;
+    }
+
+    * { box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); min-height: 100vh; padding: 20px 10px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    
+    .container { max-width: 480px; width: 100%; }
+    
+    header { margin-bottom: 20px; }
+    .brand { color: var(--accent); font-size: 2.2rem; font-weight: 900; letter-spacing: 2px; }
+    .sub-brand { color: var(--muted); font-size: 0.95rem; margin-top: 4px; }
+    
+    .card-info { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 25px; }
+    .card-info p { font-weight: bold; font-size: 1.05rem; line-height: 1.6; }
+    .arrows { color: var(--accent); font-size: 1.2rem; margin-top: 10px; letter-spacing: 5px; }
+
+    /* حاوية الإعلانات */
+    .ad-container { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 12px; margin-bottom: 25px; }
+    .ad-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 6px; width: 100%; max-width: 330px; min-height: 62px; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+
+    .status-text { color: var(--btn-green); font-size: 0.9rem; font-weight: bold; margin-bottom: 15px; }
+    
+    .btn { display: block; width: 100%; padding: 16px; border: none; border-radius: 10px; font-weight: 900; font-size: 1.1rem; cursor: pointer; text-decoration: none; margin-bottom: 12px; transition: opacity 0.2s; }
+    .btn:hover { opacity: 0.9; }
+    .btn-green { background: var(--btn-green); color: #000; }
+    .btn-yellow { background: var(--btn-yellow); color: #000; }
+    
+    .social-links { display: flex; gap: 10px; justify-content: center; margin-top: 20px; margin-bottom: 25px; }
+    .btn-social { background: #1f1f23; color: var(--text); border: 1px solid var(--border); padding: 10px 24px; border-radius: 8px; font-weight: bold; text-decoration: none; width: 48%; }
+    
+    footer { font-size: 0.8rem; color: var(--muted); border-top: 1px solid #18181b; padding-top: 15px; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="brand">ATT/DES</div>
+    <div class="sub-brand">CJ Legend - تعديلات وملفات GTA SA</div>
+  </header>
+
+  <div class="card-info">
+    <p>رابط ملفك جاهز في الأسفل، يرجى النزول لإكماله 👇</p>
+    <div class="arrows">▼ ▼ ▼</div>
+  </div>
+
+  <!-- مكان الإعلانات المكررة 20 مرة -->
+  <div class="ad-container" id="adWrapper"></div>
+
+  <div class="status-text">✅ الملف جاهز للتحميل أدناه</div>
+
+  <!-- أزرار التحميل -->
+  <a id="downloadBtn1" class="btn btn-green" onclick="handleDownload(event)">🎮 تحميل لعبة GTA SA</a>
+  <a id="downloadBtn2" class="btn btn-yellow" onclick="handleDownload(event)">📥 تحميل الملف الآن</a>
+
+  <!-- روابط التواصل -->
+  <div class="social-links">
+    <a href="https://youtube.com" target="_blank" class="btn-social">يوتيوب</a>
+    <a href="https://t.me" target="_blank" class="btn-social">تلجرام</a>
+  </div>
+
+  <footer>
+    .ATT/DES - CJ Legend 2026 ©<br>
+    جميع الحقوق محفوظة.
+  </footer>
+
+  <!-- إعلان أخير أسفل الفوتر -->
+  <div class="ad-box" id="footerAd"></div>
+
+</div>
+
+<script>
+  // رابط الإعلان النافذة الجديدة
+  const AD_DIRECT_LINK = "https://www.effectivecpmnetwork.com/qyw9rwgjh?key=ddfcf2ad5cc5d88d9d75ec98a1a7548b";
+  let targetFileUrl = "#";
+
+  // تكرار كود الإعلان 20 مرة تلقائياً
+  const adCode = `
+    <script>
+      atOptions = {
+        'key' : 'f6e0f96bba6f98a9718b237740c07b02',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    <\/script>
+    <script src="https://www.highperformanceformat.com/f6e0f96bba6f98a9718b237740c07b02/invoke.js"><\/script>
+  `;
+
+  window.onload = function() {
+    // توليد الإعلانات الـ 20
+    const wrapper = document.getElementById('adWrapper');
+    for (let i = 0; i < 20; i++) {
+      let box = document.createElement('div');
+      box.className = 'ad-box';
+      wrapper.appendChild(box);
+      injectAd(box);
+    }
+    
+    // إعلان أسفل الصفحة
+    injectAd(document.getElementById('footerAd'));
+
+    // جلب رابط المود من mod.json بناءً على ID
+    fetchModUrl();
+  };
+
+  function injectAd(element) {
+    let iframe = document.createElement('iframe');
+    iframe.style.width = "320px";
+    iframe.style.height = "50px";
+    iframe.style.border = "none";
+    iframe.style.overflow = "hidden";
+    element.appendChild(iframe);
+
+    let doc = iframe.contentWindow.document;
+    doc.open();
+    doc.write(`
+      <body style="margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;">
+        ${adCode}
+      </body>
+    `);
+    doc.close();
+  }
+
+  function fetchModUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const modId = urlParams.get('id') || '1';
+
+    fetch('./mod.json')
+      .then(res => res.json())
+      .then(data => {
+        if (data[modId]) {
+          targetFileUrl = decodeBase64(data[modId]);
+        }
+      })
+      .catch(err => console.error("خطأ في جلب الملف:", err));
+  }
+
+  function handleDownload(e) {
+    e.preventDefault();
+
+    // 1. فتح رابط الإعلان في نافذة جديدة
+    window.open(AD_DIRECT_LINK, '_blank');
+
+    // 2. التحويل إلى الرابط المباشر للمود في النافذة الحالية
+    if (targetFileUrl !== "#") {
+      window.location.href = targetFileUrl;
+    } else {
+      alert("جاري تجهيز الرابط، يرجى الانتظار ثوانٍ...");
+    }
+  }
+
+  function decodeBase64(str) {
+    try {
+      return decodeURIComponent(escape(atob(str.replace(/\n/g, ''))));
+    } catch (e) {
+      return str;
+    }
+  }
+</script>
+
+</body>
+</html>
