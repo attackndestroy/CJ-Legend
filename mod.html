@@ -36,13 +36,19 @@
 
     .status-text { color: var(--btn-green); font-size: 0.9rem; font-weight: bold; margin-bottom: 15px; }
     
-    .btn { display: block; width: 100%; padding: 16px; border: none; border-radius: 10px; font-weight: 900; font-size: 1.1rem; cursor: pointer; text-decoration: none; margin-bottom: 12px; transition: opacity 0.2s; }
+    .btn { display: block; width: 100%; border: none; border-radius: 10px; font-weight: 900; cursor: pointer; text-decoration: none; margin-bottom: 12px; transition: opacity 0.2s; }
     .btn:hover { opacity: 0.9; }
-    .btn-green { background: var(--btn-green); color: #000; }
-    .btn-yellow { background: var(--btn-yellow); color: #000; }
     
-    .social-links { display: flex; gap: 10px; justify-content: center; margin-top: 20px; margin-bottom: 25px; }
-    .btn-social { background: #1f1f23; color: var(--text); border: 1px solid var(--border); padding: 10px 24px; border-radius: 8px; font-weight: bold; text-decoration: none; width: 48%; }
+    /* تصغير زر تحميل اللعبة */
+    .btn-green { background: var(--btn-green); color: #000; padding: 12px; font-size: 0.95rem; width: 85%; margin-left: auto; margin-right: auto; }
+    
+    /* زر التحميل الرئيسي */
+    .btn-yellow { background: var(--btn-yellow); color: #000; padding: 16px; font-size: 1.1rem; }
+    
+    /* روابط التواصل الاجتماعي */
+    .social-links { display: flex; gap: 8px; justify-content: center; margin-top: 20px; margin-bottom: 25px; }
+    .btn-social { background: #1f1f23; color: var(--text); border: 1px solid var(--border); padding: 10px 8px; border-radius: 8px; font-weight: bold; font-size: 0.85rem; text-decoration: none; flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .btn-social span { color: var(--muted); font-size: 0.75rem; font-weight: normal; }
     
     footer { font-size: 0.8rem; color: var(--muted); border-top: 1px solid #18181b; padding-top: 15px; margin-bottom: 20px; }
   </style>
@@ -67,13 +73,23 @@
   <div class="status-text">✅ الملف جاهز للتحميل أدناه</div>
 
   <!-- أزرار التحميل -->
-  <a id="downloadBtn1" class="btn btn-green" onclick="handleDownload(event)">🎮 تحميل لعبة GTA SA</a>
-  <a id="downloadBtn2" class="btn btn-yellow" onclick="handleDownload(event)">📥 تحميل الملف الآن</a>
+  <a id="downloadGameBtn" class="btn btn-green" onclick="handleGameDownload(event)">🎮 تحميل لعبة GTA SA</a>
+  <a id="downloadModBtn" class="btn btn-yellow" onclick="handleModDownload(event)">📥 تحميل الملف الآن</a>
 
-  <!-- روابط التواصل -->
+  <!-- روابط التواصل الاجتماعي المعدلة -->
   <div class="social-links">
-    <a href="https://youtube.com" target="_blank" class="btn-social">يوتيوب</a>
-    <a href="https://t.me" target="_blank" class="btn-social">تلجرام</a>
+    <a href="https://youtube.com/@carl-legend" target="_blank" class="btn-social">
+      يوتيوب
+      <span>@carl-legend</span>
+    </a>
+    <a href="https://t.me/cjlegend" target="_blank" class="btn-social">
+      تلجرام
+      <span>@cjlegend</span>
+    </a>
+    <a href="https://facebook.com/cjthelegend" target="_blank" class="btn-social">
+      فيسبوك
+      <span>@cjthelegend</span>
+    </a>
   </div>
 
   <footer>
@@ -89,9 +105,10 @@
 <script>
   // رابط الإعلان النافذة الجديدة
   const AD_DIRECT_LINK = "https://www.effectivecpmnetwork.com/qyw9rwgjh?key=ddfcf2ad5cc5d88d9d75ec98a1a7548b";
+  const GAME_URL = "https://link.attdes.online/gtasa";
   let targetFileUrl = "#";
 
-  // تكرار كود الإعلان 20 مرة تلقائياً
+  // كود الإعلان
   const adCode = `
     <script>
       atOptions = {
@@ -154,13 +171,18 @@
       .catch(err => console.error("خطأ في جلب الملف:", err));
   }
 
-  function handleDownload(e) {
+  // عند الضغط على زر تحميل اللعبة
+  function handleGameDownload(e) {
     e.preventDefault();
+    window.open(AD_DIRECT_LINK, '_blank');
+    window.location.href = GAME_URL;
+  }
 
-    // 1. فتح رابط الإعلان في نافذة جديدة
+  // عند الضغط على زر تحميل المود/الملف
+  function handleModDownload(e) {
+    e.preventDefault();
     window.open(AD_DIRECT_LINK, '_blank');
 
-    // 2. التحويل إلى الرابط المباشر للمود في النافذة الحالية
     if (targetFileUrl !== "#") {
       window.location.href = targetFileUrl;
     } else {
