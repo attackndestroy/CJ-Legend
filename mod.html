@@ -21,7 +21,7 @@
       min-height: 100vh;
     }
 
-    /* الهيدر الجذاب */
+    /* الهيدر */
     header {
       background: linear-gradient(135deg, #121212 0%, #1c1c1e 100%);
       color: #ffffff;
@@ -81,7 +81,6 @@
       overflow: hidden;
     }
 
-    /* شريط حالة الأمان العلوي */
     .status-bar {
       background-color: #eef5ff;
       color: #0056b3;
@@ -101,7 +100,6 @@
       gap: 22px;
     }
 
-    /* معلومات الملف */
     .file-info {
       display: flex;
       align-items: center;
@@ -147,7 +145,6 @@
       margin-top: 4px;
     }
 
-    /* زر التحميل الأخضر/الأزرق */
     .download-btn {
       display: flex;
       align-items: center;
@@ -197,7 +194,7 @@
 </head>
 <body>
 
-  <!-- الهيدر الجديد: أسطورة سيجي -->
+  <!-- الهيدر -->
   <header>
     <a href="#" class="logo-container">
       <div class="logo-icon">
@@ -250,7 +247,7 @@
     جميع الحقوق محفوظة &copy; موقع أسطورة سيجي (Cj Legend)
   </footer>
 
-  <!-- كود جلب البيانات ديناميكياً من mod.json -->
+  <!-- كود قراءة ID وجلب الرابط من mod.json -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -274,11 +271,21 @@
           return response.json();
         })
         .then(mods => {
+          // البحث عن العنصر الذي يحمل نفس الـ id
           const mod = mods.find(item => String(item.id) === String(modId));
 
-          if (mod) {
-            nameEl.textContent = mod.name;
-            document.title = `تحميل ${mod.name} - أسطورة سيجي`;
+          if (mod && mod.link) {
+            // استخراج اسم الملف أو الرابط المختصر لعرضه كعنوان
+            const linkParts = mod.link.split('/');
+            let fileName = linkParts[linkParts.length - 1] || `Mod_File_${mod.id}`;
+            // إزالة معاملات الرابط مثل ?rlkey إن وجدت لتكون التسمية نظيفة
+            fileName = fileName.split('?')[0];
+            if (!fileName || fileName.length <= 1) {
+              fileName = `Cj_Legend_Mod_${mod.id}.zip`;
+            }
+
+            nameEl.textContent = fileName;
+            document.title = `تحميل ${fileName} - أسطورة سيجي`;
             linkEl.href = mod.link;
             linkEl.classList.remove('disabled');
             statusEl.textContent = "الملف جاهز للتحميل المباشر";
