@@ -62,6 +62,18 @@
       text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
 
+    /* حاوية الإعلانات أسفل الهيدر */
+    .header-ads {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 10px;
+      background-color: #eaeef4;
+      border-bottom: 1px solid #d1d9e2;
+      gap: 8px;
+    }
+
     /* حاوية التحميل الرئيسية */
     main {
       flex: 1;
@@ -176,6 +188,14 @@
       pointer-events: none;
     }
 
+    /* منطقة الإعلانات أسفل الزر */
+    .below-btn-ads {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     .note {
       text-align: center;
       font-size: 0.82rem;
@@ -208,6 +228,22 @@
     </a>
   </header>
 
+  <!-- إعلانات تحت الهيدر مباشرة -->
+  <div class="header-ads">
+    <script>
+      atOptions = {
+        'key' : 'f6e0f96bba6f98a9718b237740c07b02',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script src="https://bicea.org/22/f6e0f96bba6f98a9718b237740c07b02"></script>
+    <script data-cfasync="false" src="https://afders.org/1/4a748f7fe5c63fa1e378c89fcda077ee"></script>
+    <script data-cfasync="false" src="https://bicea.org/14/d96c00c4b7c9970c7d0114e414a31a75"></script>
+  </div>
+
   <!-- محتوى الصفحة -->
   <main>
     <div class="download-card">
@@ -235,6 +271,12 @@
           </svg>
           <span>تحميل الآن (DOWNLOAD)</span>
         </a>
+
+        <!-- إعلانات تحت الزر مباشرة -->
+        <div class="below-btn-ads">
+          <script async="async" data-cfasync="false" src="https://bicea.org/21/baf56d82c9fcb56275263eb2d37e5012"></script>
+          <div id="container-baf56d82c9fcb56275263eb2d37e5012"></div>
+        </div>
 
         <div class="note">
           إذا لم يبدأ التحميل تلقائيًا، اضغط مطولاً على زر التحميل واختر "فتح في علامة تبويب جديدة".
@@ -271,14 +313,11 @@
           return response.json();
         })
         .then(mods => {
-          // البحث عن العنصر الذي يحمل نفس الـ id
           const mod = mods.find(item => String(item.id) === String(modId));
 
           if (mod && mod.link) {
-            // استخراج اسم الملف أو الرابط المختصر لعرضه كعنوان
             const linkParts = mod.link.split('/');
             let fileName = linkParts[linkParts.length - 1] || `Mod_File_${mod.id}`;
-            // إزالة معاملات الرابط مثل ?rlkey إن وجدت لتكون التسمية نظيفة
             fileName = fileName.split('?')[0];
             if (!fileName || fileName.length <= 1) {
               fileName = `Cj_Legend_Mod_${mod.id}.zip`;
