@@ -1,283 +1,300 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تحميل المود</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تحميل المود - أسطورة سيجي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "y6gml6wy8y");
-    </script>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f4f6f9;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-    <!-- Popunder Code -->
-    <script src="https://pl30974093.profitableratecpmnetwork.com/4a/74/8f/4a748f7fe5c63fa1e378c89fcda077ee.js"></script>
+    /* الهيدر الجذاب */
+    header {
+      background: linear-gradient(135deg, #121212 0%, #1c1c1e 100%);
+      color: #ffffff;
+      padding: 18px 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      border-bottom: 2px solid #55ff55;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-    <!-- Social Bar Code -->
-    <script src="https://pl30974095.profitableratecpmnetwork.com/d9/6c/00/d96c00c4b7c9970c7d0114e414a31a75.js"></script>
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+    }
 
-    <style>
-        :root {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --accent-color: #ffcc00;
-            --text-color: #ffffff;
-            --green-btn: #28a745;
-            --green-btn-hover: #218838;
-            --blue-btn: #007bff;
-            --blue-btn-hover: #0056b3;
-        }
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      background: rgba(85, 255, 85, 0.15);
+      border: 1px solid #55ff55;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      color: #55ff55;
+    }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
+    .logo-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #55ff55;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
 
-        .header-img {
-            width: 100%;
-            max-width: 320px;
-            height: auto;
-            display: block;
-            margin-top: 5px;
-        }
+    /* حاوية التحميل الرئيسية */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px 15px;
+    }
 
-        .alert-box {
-            background-color: var(--card-bg);
-            border: 1.5px solid var(--accent-color);
-            color: var(--text-color);
-            padding: 8px 12px;
-            margin: 8px auto;
-            width: 90%;
-            max-width: 340px;
-            text-align: center;
-            border-radius: 6px;
-            font-size: 13px;
-            line-height: 1.4;
-        }
+    .download-card {
+      background: #ffffff;
+      width: 100%;
+      max-width: 580px;
+      border-radius: 8px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e1e5eb;
+      overflow: hidden;
+    }
 
-        .banner-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            margin: 8px 0;
-        }
+    /* شريط حالة الأمان العلوي */
+    .status-bar {
+      background-color: #eef5ff;
+      color: #0056b3;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-bottom: 1px solid #d6e6ff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        .btn-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            margin: 12px 0;
-            width: 100%;
-        }
+    .card-body {
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
 
-        .btn {
-            display: inline-block;
-            padding: 12px 16px;
-            font-size: 15px;
-            font-weight: bold;
-            color: #ffffff;
-            border-radius: 6px;
-            text-align: center;
-            cursor: pointer;
-            width: 85%;
-            max-width: 280px;
-            box-sizing: border-box;
-            border: none;
-            outline: none;
-            text-decoration: none;
-            transition: background-color 0.2s ease, transform 0.1s ease;
-        }
+    /* معلومات الملف */
+    .file-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #f9fafc;
+      padding: 16px;
+      border-radius: 6px;
+      border: 1px solid #eaedf2;
+    }
 
-        .btn:active {
-            transform: scale(0.98);
-        }
+    .file-icon {
+      width: 52px;
+      height: 52px;
+      min-width: 52px;
+      background: #55ff55;
+      color: #121212;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.9rem;
+      box-shadow: 0 3px 8px rgba(85, 255, 85, 0.3);
+    }
 
-        .btn-green {
-            background-color: var(--green-btn);
-        }
+    .file-details {
+      overflow: hidden;
+      width: 100%;
+    }
 
-        .btn-green:hover {
-            background-color: var(--green-btn-hover);
-        }
+    .file-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1a1f36;
+      word-break: break-word;
+      direction: ltr;
+      text-align: right;
+    }
 
-        .btn-blue {
-            background-color: var(--blue-btn);
-        }
+    .file-meta {
+      font-size: 0.82rem;
+      color: #697386;
+      margin-top: 4px;
+    }
 
-        .btn-blue:hover {
-            background-color: var(--blue-btn-hover);
-        }
+    /* زر التحميل الأخضر/الأزرق */
+    .download-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background-color: #0070f3;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 800;
+      padding: 16px 24px;
+      border-radius: 6px;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      box-shadow: 0 4px 14px rgba(0, 112, 243, 0.35);
+      cursor: pointer;
+    }
 
-        footer {
-            margin-top: auto;
-            padding: 12px;
-            text-align: center;
-            color: var(--accent-color);
-            font-size: 12px;
-            border-top: 1px solid #222;
-            width: 100%;
-        }
-    </style>
+    .download-btn:hover {
+      background-color: #005bb5;
+    }
+
+    .download-btn:active {
+      transform: scale(0.99);
+    }
+
+    .download-btn.disabled {
+      background-color: #9aa5b1;
+      box-shadow: none;
+      pointer-events: none;
+    }
+
+    .note {
+      text-align: center;
+      font-size: 0.82rem;
+      color: #7b8794;
+      border-top: 1px solid #f0f2f5;
+      padding-top: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 0.85rem;
+      color: #697386;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Header Image -->
-    <img src="https://attdes.online/header.png" alt="Header" class="header-img">
+  <!-- الهيدر الجديد: أسطورة سيجي -->
+  <header>
+    <a href="#" class="logo-container">
+      <div class="logo-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+      </div>
+      <span class="logo-title">أسطورة سيجي</span>
+    </a>
+  </header>
 
-    <!-- Alert Box Under Header -->
-    <div class="alert-box">
-        المود جاهز للتحميل✅<br>
-        إنزل تحت وإضغط تحميل المود♥<br>
-        <span style="color: var(--accent-color); font-size: 12px;">The mod is ready, scroll down to download</span>
-    </div>
+  <!-- محتوى الصفحة -->
+  <main>
+    <div class="download-card">
+      <div class="status-bar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span id="status-text">جاري التحقق من رابط الملف...</span>
+      </div>
 
-    <!-- 3 Banners Stacked -->
-    <div class="banner-container">
-        <!-- Banner 1 -->
-        <div>
-            <script>
-              atOptions = {
-                'key' : 'f6e0f96bba6f98a9718b237740c07b02',
-                'format' : 'iframe',
-                'height' : 50,
-                'width' : 320,
-                'params' : {}
-              };
-            </script>
-            <script src="https://www.highrevenueformat.com/f6e0f96bba6f98a9718b237740c07b02/invoke.js"></script>
+      <div class="card-body">
+        <div class="file-info">
+          <div class="file-icon">MOD</div>
+          <div class="file-details">
+            <div class="file-name" id="mod-name">جاري التحميل...</div>
+            <div class="file-meta" id="mod-meta">رابط مباشر سريع • تم الفحص وخالٍ من الفيروسات</div>
+          </div>
         </div>
 
-        <!-- Banner 2 -->
-        <div>
-            <script>
-              atOptions = {
-                'key' : 'f6e0f96bba6f98a9718b237740c07b02',
-                'format' : 'iframe',
-                'height' : 50,
-                'width' : 320,
-                'params' : {}
-              };
-            </script>
-            <script src="https://www.highrevenueformat.com/f6e0f96bba6f98a9718b237740c07b02/invoke.js"></script>
+        <a href="#" id="download-link" class="download-btn disabled" target="_blank">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>تحميل الآن (DOWNLOAD)</span>
+        </a>
+
+        <div class="note">
+          إذا لم يبدأ التحميل تلقائيًا، اضغط مطولاً على زر التحميل واختر "فتح في علامة تبويب جديدة".
         </div>
-
-        <!-- Banner 3 -->
-        <div>
-            <script>
-              atOptions = {
-                'key' : 'f6e0f96bba6f98a9718b237740c07b02',
-                'format' : 'iframe',
-                'height' : 50,
-                'width' : 320,
-                'params' : {}
-              };
-            </script>
-            <script src="https://www.highrevenueformat.com/f6e0f96bba6f98a9718b237740c07b02/invoke.js"></script>
-        </div>
+      </div>
     </div>
+  </main>
 
-    <!-- Fourth Banner Under Banners -->
-    <div style="margin: 5px 0;">
-        <script async="async" data-cfasync="false" src="https://pl30974094.profitableratecpmnetwork.com/baf56d82c9fcb56275263eb2d37e5012/invoke.js"></script>
-        <div id="container-baf56d82c9fcb56275263eb2d37e5012"></div>
-    </div>
+  <footer>
+    جميع الحقوق محفوظة &copy; موقع أسطورة سيجي (Cj Legend)
+  </footer>
 
-    <!-- Buttons Section -->
-    <div class="btn-container">
-        <!-- GTA SA Download Button (Hidden Link) -->
-        <button id="gtaBtn" class="btn btn-green">
-            تحميل لعبة GTA SA
-        </button>
+  <!-- كود جلب البيانات ديناميكياً من mod.json -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const modId = urlParams.get('id');
 
-        <!-- Mod Download Button (From JSON) -->
-        <button id="modBtn" class="btn btn-blue">
-            جاري تحميل الرابط...
-        </button>
-    </div>
+      const nameEl = document.getElementById('mod-name');
+      const linkEl = document.getElementById('download-link');
+      const statusEl = document.getElementById('status-text');
+      const metaEl = document.getElementById('mod-meta');
 
-    <!-- Footer -->
-    <footer>
-        Copyright: ATT/DES Progz
-    </footer>
+      if (!modId) {
+        nameEl.textContent = "لم يتم تحديد رقم المود في الرابط!";
+        statusEl.textContent = "خطأ في الرابط (مثال صحيح: mod.html?id=1)";
+        metaEl.textContent = "يرجى التأكد من الرابط والمحاولة مرة أخرى.";
+        return;
+      }
 
-    <!-- Scripts Logic -->
-    <script>
-        // Universal Base64 Safe Decoder
-        function decodeBase64(str) {
-            try {
-                return atob(str.trim());
-            } catch (e) {
-                return null;
-            }
-        }
+      fetch('mod.json')
+        .then(response => {
+          if (!response.ok) throw new Error("تعذر قراءة ملف mod.json");
+          return response.json();
+        })
+        .then(mods => {
+          const mod = mods.find(item => String(item.id) === String(modId));
 
-        document.addEventListener("DOMContentLoaded", function () {
-            // GTA SA Link Protection: https://link.attdes.online/gtasa
-            const encryptedGtaUrl = "aHR0cHM6Ly9saW5rLmF0dGRlcy5vbmxpbmUvZ3Rhc2E=";
-            const gtaBtn = document.getElementById('gtaBtn');
-            const modBtn = document.getElementById('modBtn');
-
-            // Handle GTA SA Button Click
-            gtaBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const destination = decodeBase64(encryptedGtaUrl);
-                if (destination) {
-                    window.open(destination, '_blank');
-                }
-            });
-
-            // Fetch Mod Link from mod.json
-            const urlParams = new URLSearchParams(window.location.search);
-            const modId = urlParams.get('id');
-
-            if (modId) {
-                fetch('mod.json')
-                    .then(response => {
-                        if (!response.ok) throw new Error('Network error');
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data && data[modId]) {
-                            const decodedModUrl = decodeBase64(data[modId]);
-                            
-                            if (decodedModUrl) {
-                                modBtn.textContent = 'تحميل المود';
-                                modBtn.addEventListener('click', function(e) {
-                                    e.preventDefault();
-                                    window.open(decodedModUrl, '_blank');
-                                });
-                            } else {
-                                modBtn.textContent = 'خطأ في فك التشفير';
-                                modBtn.style.backgroundColor = '#dc3545';
-                            }
-                        } else {
-                            modBtn.textContent = 'المود غير موجود';
-                            modBtn.style.backgroundColor = '#dc3545';
-                        }
-                    })
-                    .catch(error => {
-                        modBtn.textContent = 'خطأ في جلب البيانات';
-                        modBtn.style.backgroundColor = '#dc3545';
-                    });
-            } else {
-                modBtn.textContent = 'غير محدد ID المود';
-                modBtn.style.backgroundColor = '#dc3545';
-            }
+          if (mod) {
+            nameEl.textContent = mod.name;
+            document.title = `تحميل ${mod.name} - أسطورة سيجي`;
+            linkEl.href = mod.link;
+            linkEl.classList.remove('disabled');
+            statusEl.textContent = "الملف جاهز للتحميل المباشر";
+          } else {
+            nameEl.textContent = "عذراً، هذا المود غير موجود!";
+            statusEl.textContent = "خطأ 404 - الملف غير متوفر";
+            metaEl.textContent = "ربما تم حذف المود أو تغيير رقمه في المستودع.";
+          }
+        })
+        .catch(error => {
+          console.error(error);
+          nameEl.textContent = "حدث خطأ أثناء تحميل بيانات المود";
+          statusEl.textContent = "تأكد من وجود ملف mod.json في نفس المجلد";
         });
-    </script>
+    });
+  </script>
+
 </body>
 </html>
