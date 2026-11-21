@@ -316,15 +316,19 @@
           const mod = mods.find(item => String(item.id) === String(modId));
 
           if (mod && mod.link) {
-            const linkParts = mod.link.split('/');
-            let fileName = linkParts[linkParts.length - 1] || `Mod_File_${mod.id}`;
-            fileName = fileName.split('?')[0];
-            if (!fileName || fileName.length <= 1) {
-              fileName = `Cj_Legend_Mod_${mod.id}.zip`;
+            // استخدام حقل name من ملف mod.json إن وُجد، وإلا استخراجه من الرابط
+            let displayName = mod.name;
+            if (!displayName) {
+              const linkParts = mod.link.split('/');
+              displayName = linkParts[linkParts.length - 1] || `Mod_File_${mod.id}`;
+              displayName = displayName.split('?')[0];
+              if (!displayName || displayName.length <= 1) {
+                displayName = `Cj_Legend_Mod_${mod.id}.zip`;
+              }
             }
 
-            nameEl.textContent = fileName;
-            document.title = `تحميل ${fileName} - أسطورة سيجي`;
+            nameEl.textContent = displayName;
+            document.title = `تحميل ${displayName} - أسطورة سيجي`;
             linkEl.href = mod.link;
             linkEl.classList.remove('disabled');
             statusEl.textContent = "الملف جاهز للتحميل المباشر";
