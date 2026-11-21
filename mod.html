@@ -147,8 +147,6 @@
       font-weight: 700;
       color: #1a1f36;
       word-break: break-word;
-      direction: ltr;
-      text-align: right;
     }
 
     .file-meta {
@@ -316,16 +314,10 @@
           const mod = mods.find(item => String(item.id) === String(modId));
 
           if (mod && mod.link) {
-            // استخدام حقل name من ملف mod.json إن وُجد، وإلا استخراجه من الرابط
-            let displayName = mod.name;
-            if (!displayName) {
-              const linkParts = mod.link.split('/');
-              displayName = linkParts[linkParts.length - 1] || `Mod_File_${mod.id}`;
-              displayName = displayName.split('?')[0];
-              if (!displayName || displayName.length <= 1) {
-                displayName = `Cj_Legend_Mod_${mod.id}.zip`;
-              }
-            }
+            // إذا وُجد حقل name استخدمه، وإلا استخدم الاسم الافتراضي
+            const displayName = (mod.name && mod.name.trim() !== '')
+              ? mod.name
+              : "مود جتيا سان أندرياس";
 
             nameEl.textContent = displayName;
             document.title = `تحميل ${displayName} - أسطورة سيجي`;
